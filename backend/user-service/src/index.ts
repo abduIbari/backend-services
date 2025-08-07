@@ -1,11 +1,11 @@
-import express, { type Request, type Response } from 'express'
+import express, { type Request, type Response } from "express";
+import userRoutes from "./routes/userRoutes.js";
 
-const app = express()
+const app = express();
 
+app.use(express.json());
 
-app.get('/', (req: Request, res: Response) => {
-    res.send('Hello World!!!')
-})
-
+// Routes
+app.use("/user", userRoutes);
 
 export default app;

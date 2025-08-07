@@ -1,38 +1,67 @@
-import { DataTypes } from 'sequelize';
-import sequelize from '../sequelize.js';
+import type {
+  InferAttributes,
+  InferCreationAttributes,
+  CreationOptional,
+} from "sequelize";
+import {
+  Table,
+  Column,
+  Model,
+  DataType,
+  PrimaryKey,
+  Default,
+  AllowNull,
+  CreatedAt,
+  UpdatedAt,
+  AutoIncrement,
+} from "sequelize-typescript";
 
-const User = sequelize.define(
-  'User',
-  {
-    id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      autoIncrement: true
-    },
-    uuid: {
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
-      primaryKey: true,
-      allowNull: false,
-    },
-    user_email: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          notEmpty: true
-      }
-    },
-    user_pwd: {
-        type: DataTypes.UUID,
-        allowNull: false,
-        validate: {
-          notEmpty: true
-      }
-    } 
-  },{
-      tableName: 'users',
-      timestamps: true,
-  });
+@Table({
+  tableName: "users",
+  timestamps: true,
+})
+export default class User extends Model<
+  InferAttributes<User>,
+  InferCreationAttributes<User>
+> {
+  @AutoIncrement
+  @Column({
+    type: DataType.INTEGER,
+  })
+  declare id: CreationOptional<number>;
 
-export default User;
+  @PrimaryKey
+  @Default(DataType.UUIDV4)
+  @AllowNull(false)
+  @Column(DataType.UUID)
+  declare uuid: CreationOptional<string>;
 
+  @AllowNull(false)
+  @Column({
+    type: DataType.STRING,
+    validate: {
+      notEmpty: true,
+    },
+  })
+  declare user_email: string;
+
+  @AllowNull(false)
+  @Column({
+    type: DataType.STRING,
+    validate: {
+      notEmpty: true,
+    },
+  })
+  declare user_pwd: string;
+
+  @CreatedAt
+  @Column({ type: DataType.DATE, field: "created_at" })
+  declare createdAt: CreationOptional<Date>;
+
+  @UpdatedAt
+  @Column({
+    type: DataType.DATE,
+    field: "updated_at",
+  })
+  declare updatedAt: CreationOptional<Date>;
+}

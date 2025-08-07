@@ -25,7 +25,7 @@ export async function registerUser(
     const hashedPassword = await bcrypt.hash(user_pwd, 10);
 
     const newUser = await User.create({
-      user_email,
+      user_email: user_email,
       user_pwd: hashedPassword,
     });
 
@@ -71,13 +71,9 @@ export async function loginUser(
       return;
     }
 
-    const token = jwt.sign(
-      { uuid: existingUser.uuid, user_email: existingUser.user_email },
-      "jwt_secret",
-      {
-        expiresIn: "24h",
-      }
-    );
+    const token = jwt.sign({ user_uuid: existingUser.uuid }, "jwt_secret", {
+      expiresIn: "24h",
+    });
     response.status(200).json({ message: "Logged in Successfully", token });
   } catch (error) {
     console.error("Error registering user:", error);

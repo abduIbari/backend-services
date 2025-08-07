@@ -10,7 +10,7 @@ import User from "./models/Users.js";
 
 const sequelize = new Sequelize({
   dialect: "sqlite",
-  storage: ":memory:", // in-memory DB
+  storage: ":memory:",
   logging: false,
   models: [User],
 });

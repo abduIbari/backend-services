@@ -18,16 +18,6 @@ The application consists of the following services:
 
 - **PgAdmin**: Database administration tool (port 5050)
 
-Verify your installation:
-
-```bash
-
-docker  --version
-
-docker-compose  --version
-
-```
-
 ## Project Structure
 
 Make sure your project directory structure matches:

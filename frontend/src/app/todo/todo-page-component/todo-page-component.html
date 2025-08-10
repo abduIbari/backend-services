@@ -1,0 +1,12 @@
+<div class="w-full flex justify-center items-center min-h-screen bg-slate-300">
+  <div
+    class="w-[75%] min-h-[350px] mx-auto p-6 bg-gray-400 rounded-xl shadow-lg space-y-6"
+  >
+    <app-todo-add-component (add)="onAdd($event)"></app-todo-add-component>
+    <app-todo-list-component
+      [todos]="todos()"
+      (update)="onUpdate($event)"
+      (delete)="onDelete($event)"
+    ></app-todo-list-component>
+  </div>
+</div>

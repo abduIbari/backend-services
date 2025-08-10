@@ -1,3 +1,5 @@
+import { UUID } from 'crypto';
+
 export interface User {
   user_email: string;
   user_pwd: string;
@@ -15,4 +17,5 @@ export interface RegisterResponse {
 export interface LoginResponse {
   message: string;
   token: string;
+  user_uuid: UUID;
 }

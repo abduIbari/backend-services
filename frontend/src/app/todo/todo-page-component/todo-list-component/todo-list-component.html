@@ -1,0 +1,12 @@
+<div *ngIf="todos().length; else empty" class="space-y-3">
+  <app-todo-item-component
+    *ngFor="let todo of todos(); trackBy: trackByUuid"
+    [todo]="todo"
+    (update)="onUpdate($event)"
+    (delete)="onDelete($event)"
+  ></app-todo-item-component>
+</div>
+
+<ng-template #empty>
+  <p class="text-gray-500 text-center italic">No tasks yet</p>
+</ng-template>

@@ -40,8 +40,7 @@ export class Login {
       next: (res) => {
         console.log('Login successful', res);
         localStorage.setItem('token', res.token); // Save token
-        // TODO: Save token, redirect to todo list
-        // this.router.navigate(['/todo-list']);
+        this.router.navigate(['/todo']);
       },
       error: (err) => {
         switch (err.status) {

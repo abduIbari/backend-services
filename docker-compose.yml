@@ -14,8 +14,8 @@ services:
       - app-network
 
   todo-service:
-    build: ./backend/todo-service  
-    container_name: todo-service       
+    build: ./backend/todo-service
+    container_name: todo-service
     depends_on:
       - tododb
     environment:
@@ -70,6 +70,18 @@ services:
       - PGADMIN_DEFAULT_EMAIL=admin@admin.com
       - PGADMIN_DEFAULT_PASSWORD=root
     restart: unless-stopped
+    networks:
+      - app-network
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: angular-frontend
+    ports:
+      - "4200:8080"
+    depends_on:
+      - todo-service
+      - user-service
     networks:
       - app-network
 

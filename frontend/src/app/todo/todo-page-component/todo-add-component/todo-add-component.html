@@ -1,0 +1,20 @@
+<div class="flex flex-col">
+  <span class="text-center font-bold text-2xl mb-2 font-sans">
+    Add new task
+  </span>
+
+  <div class="flex flex-row items-center justify-between space-x-2">
+    <input
+      [value]="content()"
+      (input)="content.set($any($event.target).value)"
+      (keydown.enter)="addTask()"
+      class="flex-grow px-3 py-2 mb-5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
+    <button
+      (click)="addTask()"
+      class="px-4 py-2 mb-5 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition"
+    >
+      Add
+    </button>
+  </div>
+</div>

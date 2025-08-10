@@ -74,7 +74,10 @@ export async function loginUser(
     const token = jwt.sign({ user_uuid: existingUser.uuid }, "jwt_secret", {
       expiresIn: "24h",
     });
-    response.status(200).json({ message: "Logged in Successfully", token });
+    response.status(200).json({
+      message: "Logged in Successfully",
+      token,
+    });
   } catch (error) {
     console.error("Error registering user:", error);
     response.status(500).json({ message: "Internal server error" });

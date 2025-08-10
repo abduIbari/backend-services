@@ -1,0 +1,30 @@
+<div
+  class="flex items-center gap-4 p-3 mb-2 bg-gray-200 rounded-lg shadow-sm"
+  *ngIf="todo() as t"
+>
+  <label class="flex items-center">
+    <input
+      type="checkbox"
+      [checked]="t.completed"
+      (change)="onToggleComplete($event)"
+      class="h-4 w-4 text-blue-500 border-gray-300 rounded"
+    />
+  </label>
+  <span
+    [class.line-through]="t.completed"
+    [class.text-gray-400]="t.completed"
+    class="flex-grow outline-none font-medium"
+    [attr.contenteditable]="!t.completed"
+    (click)="$event.stopPropagation()"
+    (keydown.enter)="$event.preventDefault(); onContentUpdate($event)"
+    (blur)="onContentUpdate($event)"
+  >
+    {{ t.content }}
+  </span>
+  <button
+    (click)="onDelete()"
+    class="text-red-500 hover:text-red-700 transition"
+  >
+    Delete
+  </button>
+</div>

@@ -24,12 +24,12 @@ export default class Todo extends Model<
   InferAttributes<Todo>,
   InferCreationAttributes<Todo>
 > {
-  // @AutoIncrement
-  // @AllowNull(false)
-  // @Column({
-  //   type: DataType.INTEGER,
-  // })
-  // declare id: CreationOptional<number>;
+  @AutoIncrement
+  @AllowNull(false)
+  @Column({
+    type: DataType.INTEGER,
+  })
+  declare id: CreationOptional<number>;
 
   @PrimaryKey
   @Default(DataType.UUIDV4)

@@ -1,18 +1,19 @@
 import { Sequelize } from "sequelize-typescript";
 import User from "./models/Users.js";
 
-// const sequelize = new Sequelize("userdb", "abdul", "password", {
-//   host: "userdb",
-//   port: 5432,
-//   dialect: "postgres",
-//   logging: false,
-// });
-
-const sequelize = new Sequelize({
-  dialect: "sqlite",
-  storage: ":memory:",
+const sequelize = new Sequelize("userdb", "abdul", "password", {
+  host: "userdb",
+  port: 5432,
+  dialect: "postgres",
   logging: false,
   models: [User],
 });
+
+// const sequelize = new Sequelize({
+//   dialect: "sqlite",
+//   storage: ":memory:",
+//   logging: false,
+//   models: [User],
+// });
 
 export default sequelize;

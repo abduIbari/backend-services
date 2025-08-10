@@ -1,5 +1,5 @@
 export interface Todo {
-  task_uuid: string;
+  uuid: string;
   content: string;
   user_uuid: string;
   completed: boolean;

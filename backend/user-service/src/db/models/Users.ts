@@ -24,12 +24,12 @@ export default class User extends Model<
   InferAttributes<User>,
   InferCreationAttributes<User>
 > {
-  // @AutoIncrement
-  // @AllowNull(false)
-  // @Column({
-  //   type: DataType.INTEGER,
-  // })
-  // declare id: CreationOptional<number>;
+  @AutoIncrement
+  @AllowNull(false)
+  @Column({
+    type: DataType.INTEGER,
+  })
+  declare id: CreationOptional<number>;
 
   @PrimaryKey
   @Default(DataType.UUIDV4)

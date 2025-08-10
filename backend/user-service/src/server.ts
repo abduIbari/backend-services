@@ -9,9 +9,9 @@ async function connectWithRetry() {
   while (retries) {
     try {
       await sequelize.authenticate();
-      console.log("Database connected!");
+      console.log(`Database connected on port ${PORT}!`);
 
-      await sequelize.sync({ alter: true });
+      await sequelize.sync();
 
       app.listen(PORT, () => {
         console.log(`Server listening on http://localhost:${PORT}`);
